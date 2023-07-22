@@ -23,17 +23,22 @@ let xRaqueteOponente  = 589;
 let alturaDaRaqueteOponente = 90;
 let yRaqueteOponente = 150;
 let raqueteOponenteColidio = false;
-// sons
-//let raquete;
-//let Marcarponto;
-//let trilha;
 
-//function preload() { // funçoes para tocar musica. 
-//    fundo  = loadSound("fundoPiano.mp3");
-  //  Marcarponto = loadSound("marcarPonto.mp3");
-    //raquetada = loadSound("raquetada.mp3");
-    //comemoracao = loadSound ("comemoraçao.wav")
-//}
+
+// sons
+let raquete;
+let Marcarponto;
+let trilha;
+let tocarSom = false;
+
+function preload() { // funçoes para tocar musica. 
+    if(tocarSom){
+		fundo  = loadSound("fundoPiano.mp3");
+		Marcarponto = loadSound("marcarPonto.mp3");
+		raquetada = loadSound("raquetada.mp3");
+		comemoracao = loadSound ("comemoraçao.wav")
+	}
+}
 
 //contador de pontos
 let meusPontos = 0 ;
@@ -41,8 +46,9 @@ let pontosDoOponente = 0 ;
 
 function setup() {
   createCanvas(600, 400);
-  //fundo.loop();
-
+  if(tocarSom){
+	fundo.loop();
+  }
 }
 
 //onde se armazenam funções,para ficarem de   forma mais organizada.
@@ -60,7 +66,7 @@ function draw() {
   movimentaRaqueteOponente();
   verificarColisaoRaqueteOponete();
   incluiPlacar();
-  //marcaPonto ();
+  marcaPonto ();
   verificarAlmentoDeVelocidade();
 }
 
@@ -79,7 +85,9 @@ function movimentacaoBola() {
 function colisaoBorda() {
   if (xBola + raio > width || xBola - raio < 0) {
     velocidadeXBola *= -1;
-    // Marcarponto.play();
+	if(tocarSom){
+		Marcarponto.play();
+	}
   }
 
   if (yBola + raio > height || yBola - raio < 0) {
@@ -105,9 +113,11 @@ function verificarColisaoRaquete(){
      &&  yBola - raio < yRaquete + alturaDaRaquete
      &&  yBola + raio > yRaquete) {
 
-       velocidadeXBola *= -1;
-      // raquetada.play();
-     }  
+		velocidadeXBola *= -1;
+		if(tocarSom){
+			raquetada.play();
+		}
+	}  
 }
 
 
@@ -183,8 +193,9 @@ function verificarColisaoRaqueteOponete(){
     if (raqueteOponenteColidio) {
       velocidadeXBola *= -1;
 	  raqueteBateuSemPontuar += 1;
-     // raquetada.play();
-   
+	  if(tocarSom){
+		raquetada.play();
+	  }
    }
 }
 
@@ -194,16 +205,17 @@ function verificarColisaoRaquete() {
       yBola + raio > yRaquete) {
 
 	velocidadeXBola *= +1;
-   raqueteBateuSemPontuar += 1;
-	//raquetada.play();
+	raqueteBateuSemPontuar += 1;
+	if(tocarSom){
+		raquetada.play();
+	}
   }
 } 
 
 function verificarAlmentoDeVelocidade(){
 	if	(raqueteBateuSemPontuar > 1) {
-      raqueteBateuSemPontuar = 0;
-	  velocidadeXBola += 2;
-      velocidadeYBola += 2;
-    
+		raqueteBateuSemPontuar = 0;
+		velocidadeXBola += 2;
+		velocidadeYBola += 2;
 	}
 } 
