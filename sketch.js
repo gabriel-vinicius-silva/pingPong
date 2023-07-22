@@ -200,11 +200,13 @@ function verificarColisaoRaqueteOponete(){
 }
 
 function verificarColisaoRaquete() {
+	
+	//collideRectCircle()
   if (xBola - raio < xRaquete + comprimentoDaRaquete &&
       yBola - raio < yRaquete + alturaDaRaquete &&
       yBola + raio > yRaquete) {
 
-	velocidadeXBola *= +1;
+	velocidadeXBola *= -1;
 	raqueteBateuSemPontuar += 1;
 	if(tocarSom){
 		raquetada.play();
