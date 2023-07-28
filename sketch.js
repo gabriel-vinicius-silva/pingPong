@@ -19,7 +19,7 @@ let yRaquete =150;
 let comprimentoDaRaquete = 10;
 let comprientoRaqueteOponente = 10;
 let alturaDaRaquete = 90;
-let xRaqueteOponente  = 589;
+let xRaqueteOponente  = 590;
 let alturaDaRaqueteOponente = 90;
 let yRaqueteOponente = 150;
 let raqueteOponenteColidio = false;
@@ -68,6 +68,7 @@ function draw() {
   incluiPlacar();
   marcaPonto ();
   verificarAlmentoDeVelocidade();
+  bolaNaoFicaPresa();
 }
 
 // Função para exibir a bola do pong
@@ -202,16 +203,31 @@ function verificarColisaoRaqueteOponete(){
 function verificarColisaoRaquete() {
 	
 	//collideRectCircle()
-  if (xBola - raio < xRaquete + comprimentoDaRaquete &&
-      yBola - raio < yRaquete + alturaDaRaquete &&
-      yBola + raio > yRaquete) {
-
-	velocidadeXBola *= -1;
-	raqueteBateuSemPontuar += 1;
-	if(tocarSom){
-		raquetada.play();
+	  if (
+		collideRectCircle
+		(
+			xRaquete,
+			yRaquete,
+			comprimentoDaRaquete,
+			alturaDaRaquete,
+			xBola,
+			yBola,
+			raio
+		)
+		){
+			velocidadeXBola *= -1;
+			raqueteBateuSemPontuar += 1;
+			if(tocarSom){
+				raquetada.play();
+			}
 	}
-  }
+  
+  //if (xBola - raio < xRaquete + comprimentoDaRaquete &&
+  //    yBola - raio < yRaquete + alturaDaRaquete &&
+  //    yBola + raio > yRaquete) {
+
+	
+  //}
 } 
 
 function verificarAlmentoDeVelocidade(){
@@ -220,4 +236,10 @@ function verificarAlmentoDeVelocidade(){
 		velocidadeXBola += 2;
 		velocidadeYBola += 2;
 	}
-} 
+}
+
+function bolaNaoFicaPresa(){
+    if (xBola - raio < 0){
+    xBola = 23
+    }
+}
