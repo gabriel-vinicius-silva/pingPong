@@ -257,4 +257,8 @@ function pausarOJogo(){
        xRaquete = 0
     if (keyCode === 13 ){
       pausar = true }
+     if (pausar = true && keyCode === 13  ) {
+       
+      pausar = false
     }
+}
