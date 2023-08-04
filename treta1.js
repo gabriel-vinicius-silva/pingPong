@@ -251,10 +251,12 @@ function bolaNaoFicaPresa(){
 
 
 function pausarOJogo(){
-    if (keyCode === 13 ) 
+    if (keyCode === 13 ) {
       velocidadeXBola  = 0
        velocidadeYBola = 0
        xRaquete = 0
     if (keyCode === 13 ){
-      pausar = true }
+      pausar = true 
     }
+  }
+}
