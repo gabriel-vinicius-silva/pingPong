@@ -4,24 +4,29 @@
  * O projeto visa ampliar os meus conhecimentos sobre o JavaScript.
  */
 
-// Movimentos da bola e diâmetros
-//raquete quando  tever muita DEFESA se usa :
-let raqueteBateuSemPontuar = 0;
 
+//Para saber se a raquete bateu sem pontuar se usa :
+let raqueteBateuSemPontuar = 0;
+// Movimentos da bola e diâmetr
 let xBola = 300; // X = altura
 let yBola = 200; // Y = movimentos laterais
 let diametro = 15;
+//velocidade da bola
 let velocidadeXBola = 5;
 let velocidadeYBola = 5;
+// meio da bola 
 let raio = diametro / 2;
+// Raquete :
 let xRaquete = 5;
 let yRaquete =150;
 let comprimentoDaRaquete = 10;
 let comprientoRaqueteOponente = 10;
 let alturaDaRaquete = 90;
+// raquete oponente ...
 let xRaqueteOponente  = 590;
 let alturaDaRaqueteOponente = 90;
 let yRaqueteOponente = 150;
+//raquete bateu sem colidir
 let raqueteOponenteColidio = false;
 //pausar o jogo
 let pausar = false;
@@ -33,7 +38,8 @@ let Marcarponto;
 let trilha;
 let tocarSom = false;
 
-function preload() { // funçoes para tocar musica. 
+// funçoes para tocar musica. 
+function preload(){ 
     if(tocarSom){
 		fundo  = loadSound("fundoPiano.mp3");
 		Marcarponto = loadSound("marcarPonto.mp3");
@@ -46,32 +52,43 @@ function preload() { // funçoes para tocar musica.
 let meusPontos = 0 ;
 let pontosDoOponente = 0 ;  
 
+// funçoes do setup
 function setup() {
   createCanvas(600, 400);
   if(tocarSom){
 	fundo.loop();
-  }
+}
 }
 
-//onde se armazenam funções,para ficarem de   forma mais organizada.
+//Armazenamento de funçoes (function)
+  
 function draw() {  
+  
+  //fundo do jogo 
   background(0);
-  //função que fas a bola aparecer
+  //função que faz a bola aparecer na tela 
   mostrarABola(); 
   // função que determina os movimentos da bola  
   movimentacaoBola(); 
-  colisaoBorda(); // função quu determina as colizões da borda 
-  mostrarARaquete(); //  função que mostra a movimentação raquete
-  verificarColisaoRaquete(); //função que mostrAmovimentaçãoraquete
+  // função quu determina as colizões da borda 
+  colisaoBorda();
+  //  função que mostra as raquete e verifica sua colisão com determinada coisas
+  mostrarARaquete(); 
+  verificarColisaoRaquete(); 
   mostrarARaqueteOponente ();
+  //função que mostra a movimentação da raquete
   movimentacaoDaRaquete();
   movimentaRaqueteOponente();
   verificarColisaoRaqueteOponete();
+  //função de incluir placar e marcar pontos 
   incluiPlacar();
   marcaPonto ();
+  // almeto da velocidade 
   verificarAlmentoDeVelocidade();
+  //remover bugs
   bolaNaoFicaPresa();
-   pausarOJogo();
+  // pausar o jogo   
+  pausarOJogo();
 }
 
 // Função para exibir a bola do pong
@@ -106,7 +123,7 @@ function mostrarARaquete() {
 }
 function mostrarARaqueteOponente() {
   fill(color(0,191,255));
-  rect(xRaqueteOponente,yRaqueteOponente,comprientoRaqueteOponente,                 alturaDaRaqueteOponente)
+  rect(xRaqueteOponente,yRaqueteOponente,comprientoRaqueteOponente, alturaDaRaqueteOponente)
 }
   
        
@@ -121,7 +138,7 @@ function verificarColisaoRaquete(){
 		if(tocarSom){
 			raquetada.play();
 		}
-	}  
+}  
 }
 
 
@@ -244,21 +261,26 @@ function verificarAlmentoDeVelocidade(){
 }
 
 function bolaNaoFicaPresa(){
-    if (xBola - raio < 0){
-    xBola = 23
-    }
+   // if (xBola - raio < 0){
+   // xBola = 23
+   // }
 } 
 
 
 function pausarOJogo(){
-    if (keyCode === 13 ) 
+  
+  //DESPAUSAR
+  if(pausar && keyCode === 13) {
+      velocidadeXBola  = 5
+      velocidadeYBola = 5
+      xRaquete = 5
+  } 
+  
+  
+  if (pausar == false && keyCode === 13 ) { 
       velocidadeXBola  = 0
        velocidadeYBola = 0
-       xRaquete = 0
-    if (keyCode === 13 ){
-      pausar = true }
-     if (pausar = true && keyCode === 13  ) {
-       
-      pausar = false
-    }
+       xRaquete = 0    
+  }
+   
 }
