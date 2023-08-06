@@ -270,17 +270,22 @@ function bolaNaoFicaPresa(){
 function pausarOJogo(){
   
   //DESPAUSAR
-  if(pausar && keyCode === 13) {
+  if(pausar && keyIsDown(13)) {
       velocidadeXBola  = 5
       velocidadeYBola = 5
       xRaquete = 5
+	  alert("apertou despausa");
   } 
   
   
-  if (pausar == false && keyCode === 13 ) { 
-      velocidadeXBola  = 0
-       velocidadeYBola = 0
-       xRaquete = 0    
+  if (pausar == false && keyIsDown(13)) { 
+		velocidadeXBola  = 0
+		velocidadeYBola = 0
+		xRaquete = 0 
+		alert("apertou pausa");
+		pausar = false 
+		pausar = true;
+		
   }
    
 }
