@@ -267,25 +267,20 @@ function bolaNaoFicaPresa(){
 } 
 
 
-function pausarOJogo(){
-  
-  //DESPAUSAR
-  if(pausar && keyIsDown(13)) {
-      velocidadeXBola  = 5
-      velocidadeYBola = 5
-      xRaquete = 5
-	  alert("apertou despausa");
-  } 
-  
-  
-  if (pausar == false && keyIsDown(13)) { 
-		velocidadeXBola  = 0
-		velocidadeYBola = 0
-		xRaquete = 0 
-		alert("apertou pausa");
-		pausar = false 
-		pausar = true;
-		
+function pausarOJogo() {
+  if (keyIsDown(13)) {
+    pausar = !pausar; // Inverte o valor de pausar (true para false e vice-versa)
+
+    if (pausar) {
+      velocidadeXBola = 0;
+      velocidadeYBola = 0;
+      // Outras ações de pausa que você queira executar
+      alert("Jogo pausado");
+    } else {
+      velocidadeXBola = 5; // Retome as velocidades originais (ajuste conforme necessário)
+      velocidadeYBola = 5;
+      // Outras ações de retomada que você queira executar
+      alert("Jogo retomado");
+    }
   }
-   
 }
