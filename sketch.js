@@ -36,7 +36,7 @@ let pausar = false;
 let raquete;
 let Marcarponto;
 let trilha;
-let tocarSom = false;
+let tocarSom = true;
 
 // funçoes para tocar musica. 
 function preload(){ 
