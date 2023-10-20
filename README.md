@@ -14,7 +14,7 @@ O jogador precisa ricochetear a bolinha a ponto que ela colida na lateral da raq
 
 ## :sunrise_over_mountains: Publicação
 
-O jogo não está publicado ainda, em breve disponibliizarei-o para jogar diretamente no navegador, no momento apenas baixando o projeto e rodando localmente.
+O jogo não está publicado , em breve e está disponível para jogar diretamente no navegador, ou  apenas baixando o projeto e rodando localmente.
 
 
 
